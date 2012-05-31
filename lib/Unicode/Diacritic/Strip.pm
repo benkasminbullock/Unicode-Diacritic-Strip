@@ -1,23 +1,12 @@
-=head1 NAME
-
-Unicode::Diacritic::Strip - strip diacritics from Unicode text
-
-=head1 FUNCTIONS
-
-=cut
-
 package Unicode::Diacritic::Strip;
-use parent Exporter;
+require Exporter;
+@ISA = qw(Exporter);
 our @EXPORT_OK = qw/strip_diacritics/;
 use warnings;
 use strict;
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 use Unicode::UCD 'charinfo';
 use Encode 'decode_utf8';
-
-=head2 strip_diacritics
-
-=cut
 
 sub strip_diacritics
 {
