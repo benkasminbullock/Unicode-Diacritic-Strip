@@ -1,0 +1,27 @@
+=head1 NAME
+
+Unicode::Diacritic::Strip - strip diacritics from Unicode text
+
+=head1 FUNCTIONS
+
+=head2 strip_diacritics
+
+    my $stripped = strip_diacritics ($text);
+
+Strip diacritics from C<$text>. The diacritics are as defined by the
+Unicode Character Database. See L<Unicode::UCD>.
+
+=head1 AUTHOR
+
+Ben Bullock, <bkb@cpan.org>
+
+=head1 COPYRIGHT & LICENCE
+
+This package and associated files are copyright (C) 2012 Ben Bullock.
+
+You can use, copy, modify and redistribute this package and associated
+files under the Perl Artistic Licence or the GNU General Public
+Licence.
+
+
+
