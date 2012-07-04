@@ -4,7 +4,7 @@ require Exporter;
 our @EXPORT_OK = qw/strip_diacritics/;
 use warnings;
 use strict;
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 use Unicode::UCD 'charinfo';
 use Encode 'decode_utf8';
 
