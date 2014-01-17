@@ -1,0 +1,9 @@
+^blib/.*$
+^Makefile$
+^build\.pl$
+^\.git.*$
+\.pod\.tmpl$
+^MYMETA\..*$
+^pm_to_blib$
+# Tar files, untarred tarfiles
+^Unicode-Diacritics-Strip-.*$
