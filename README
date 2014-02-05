@@ -12,7 +12,7 @@
                                                                 |_|    
 
 
-This is the README for Unicode::Diacritic::Strip version 0.04.
+This is the README for Unicode::Diacritic::Strip version 0.05.
 
 Unicode::Diacritic::Strip is a "module" for the Perl computer programming
 language, a library of computer code to install on a computer.  This document
@@ -54,6 +54,8 @@ using
 
 3. INSTALLATION
 
+This module requires Perl version 5.8.9 or later.
+
 To install the module from CPAN, use
 
     cpan Unicode::Diacritic::Strip
@@ -63,10 +65,10 @@ If you have the App::cpanminus installer, you may prefer
     cpanm Unicode::Diacritic::Strip
 
 To install the module from the source file,
-Unicode-Diacritic-Strip-0.04.tar.gz, follow this sequence of commands:
+Unicode-Diacritic-Strip-0.05.tar.gz, follow this sequence of commands:
 
-    tar xfz Unicode-Diacritic-Strip-0.04.tar.gz
-    cd Unicode-Diacritic-Strip-0.04
+    tar xfz Unicode-Diacritic-Strip-0.05.tar.gz
+    cd Unicode-Diacritic-Strip-0.05
     perl Makefile.PL
     make
     make install
@@ -91,6 +93,6 @@ public repository on github at
 
 -----------------------------------------------------------------------------
 
-This README was written on Fri Jan 17 08:48:44 2014.
+This README was written on Thu Feb  6 00:00:14 2014.
 
 -----------------------------------------------------------------------------
