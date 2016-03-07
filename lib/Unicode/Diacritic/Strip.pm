@@ -1,10 +1,10 @@
 package Unicode::Diacritic::Strip;
-require Exporter;
-@ISA = qw(Exporter);
-our @EXPORT_OK = qw/strip_diacritics/;
 use warnings;
 use strict;
-our $VERSION = 0.05;
+require Exporter;
+use base qw(Exporter);
+our @EXPORT_OK = qw/strip_diacritics/;
+our $VERSION = '0.06';
 use Unicode::UCD 'charinfo';
 use Encode 'decode_utf8';
 
@@ -12,17 +12,18 @@ sub strip_diacritics
 {
     my ($diacritics_text) = @_;
     if ($diacritics_text !~ /[^\x{01}-\x{80}]/) {
-        # There are no diacritics;
+        # All the characters in this text are ASCII, and so there are
+        # no diacritics.
         return $diacritics_text;
     }
-    my @characters = split '', $diacritics_text;
+    my @characters = split //, $diacritics_text;
     for my $character (@characters) {
-        # Reject non-word characters
-        next unless $character =~ /\w/;
+        # Leave non-word characters unaltered.
+	if ($character =~ /\W/) {
+	    next;
+	}
         my $decomposed = decompose ($character);
         if ($character ne $decomposed) {
-            # If the character has been altered, highlight and add a
-            # mouseover showing the original character.
             $character = $decomposed;
         }
     }
@@ -39,7 +40,9 @@ sub decompose
     my $charinfo = charinfo (ord $character);
     my $decomposition = $charinfo->{decomposition};
     # Give up if there is no decomposition for $character
-    return $character unless $decomposition;
+    if (! $decomposition) {
+	return $character;
+    }
     # Get the first character of the decomposition
     my @decomposition_chars = split /\s+/, $decomposition;
     $character = chr hex $decomposition_chars[0];

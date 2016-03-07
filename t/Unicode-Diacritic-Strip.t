@@ -1,6 +1,6 @@
 use warnings;
 use strict;
-use Test::More tests => 2;
+use Test::More;
 binmode STDOUT, ":utf8";
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -14,6 +14,4 @@ my $in = 'àÀâÂäçéÉèÈêÊëîïôùÙûüÜがぎぐげご';
 my $out = 'aAaAaceEeEeEeiiouUuuUかきくけこ';
 my $stripped = strip_diacritics ($in);
 ok ($stripped eq $out, "Strip $in = $out");
-# Local variables:
-# mode: perl
-# End:
+done_testing ();

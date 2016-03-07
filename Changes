@@ -1,5 +1,9 @@
 Revision history for perl module Unicode::Diacritic::Strip
 
+0.06 2016-03-07
+
+* Minor changes
+
 0.05 2014-02-06
 
 * Add MIN_PERL_VERSION in Makefile.PL.

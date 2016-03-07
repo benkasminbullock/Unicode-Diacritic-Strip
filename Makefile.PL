@@ -3,10 +3,8 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 my $name = 'Unicode::Diacritic::Strip';
-my $pm = "lib/$name.pm";
-$pm =~ s!::!/!g;
-my $pod = $pm;
-$pod =~ s!\.pm$!.pod!g;
+my $pm = 'lib/Unicode/Diacritic/Strip.pm';
+my $pod = 'lib/Unicode/Diacritic/Strip.pod';
 my $repo = "https://github.com/benkasminbullock/$name";
 $repo =~ s!::!-!g;
 
@@ -17,6 +15,7 @@ WriteMakefile (
     AUTHOR => 'Ben Bullock <bkb@cpan.org>',
     LICENSE => 'perl',
     PREREQ_PM => {
+	'Unicode::UCD' => '0',
     },
     META_MERGE => {
         resources => {
