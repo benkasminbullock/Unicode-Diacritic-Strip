@@ -1,1 +1,7 @@
+# Generated files.
 Makefile
+MANIFEST
+README
+lib/Unicode/Diacritic/Strip.pod
+# Distribution files
+Unicode-Diacritic-Strip-[0-9]*
