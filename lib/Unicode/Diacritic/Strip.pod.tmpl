@@ -92,9 +92,27 @@ This somewhat bizarre module converts Unicode to ASCII.
 
 =head1 EXPORTS
 
-Nothing is exported by default. The functions L</strip_diacritics> and
-L</fast_strip> are exported on demand. A tag C<:all> exports all the
-functions from the module.
+Nothing is exported by default. The functions L</strip_diacritics>,
+L</strip_alphabet>, and L</fast_strip> are exported on demand. A tag
+C<:all> exports all the functions from the module.
+
+=head1 BUGS
+
+=over
+
+=item Test failures on Perl 5.14
+
+The test failures on CPAN testers for version 0.08 of this module and
+Perl version 5.14, such as
+L<these|http://matrix.cpantesters.org/?dist=Unicode-Diacritic-Strip%200.08;os=linux;perl=5.14.2;reports=1>,
+containing the error string
+
+    perl: hv.c:2663: S_unshare_hek_or_pvn: Assertion `he->shared_he_he.hent_hek == hek' failed.
+
+are due to a bug in that version of Perl, and are completely beyond my
+control. [% info.colon %] is a pure Perl module with no XS components.
+
+=back
 
 [% INCLUDE "author" %]
 
