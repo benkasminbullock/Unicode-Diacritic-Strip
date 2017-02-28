@@ -1,5 +1,11 @@
 Revision history for perl module Unicode::Diacritic::Strip
 
+0.07 2017-02-28
+
+* Export tag ":all"
+* More tests
+* Added "fast_strip" function.
+
 0.06 2016-03-07
 
 * Minor changes

@@ -3,10 +3,12 @@ use warnings;
 use strict;
 require Exporter;
 use base qw(Exporter);
-our @EXPORT_OK = qw/strip_diacritics/;
-our $VERSION = '0.06';
+our @EXPORT_OK = qw/strip_diacritics fast_strip/;
+our %EXPORT_TAGS = (all => \@EXPORT_OK);
+our $VERSION = '0.07';
 use Unicode::UCD 'charinfo';
 use Encode 'decode_utf8';
+use utf8;
 
 sub strip_diacritics
 {
@@ -49,6 +51,18 @@ sub decompose
     # A character may have multiple decompositions, so repeat this
     # process until there are none left.
     return decompose ($character);
+}
+
+sub fast_strip
+{
+    my ($word) = @_;
+    # Expand ligatures.
+    $word =~ s/œ/oe/g;
+    # Thorn is "th".
+    $word =~ s/Þ|þ/th/g;
+    # Remove all diacritics
+    $word =~ tr/ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïñòóôõöùúûüýÿĀāĂăĄąĆćĈĉĊċČčĎďĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĨĩĪīĬĭĮįİĴĵĶķĹĺĻļĽľŁłŃńŅņŇňŌōŎŏŐőŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžƠơƯưǍǎǏǐǑǒǓǔǕǖǗǘǙǚǛǜǞǟǠǡǦǧǨǩǪǫǬǭǰǴǵǸǹǺǻȀȁȂȃȄȅȆȇȈȉȊȋȌȍȎȏȐȑȒȓȔȕȖȗȘșȚțȞȟȦȧȨȩȪȫȬȭȮȯȰȱȲȳøØ/AAAAAACEEEEIIIINOOOOOUUUUYaaaaaaceeeeiiiinooooouuuuyyAaAaAaCcCcCcCcDdEeEeEeEeEeGgGgGgGgHhIiIiIiIiIJjKkLlLlLlLlNnNnNnOoOoOoRrRrRrSsSsSsSsTtTtUuUuUuUuUuUuWwYyYZzZzZzOoUuAaIiOoUuUuUuUuUuAaAaGgKkOoOojGgNnAaAaAaEeEeIiIiOoOoRrRrUuUuSsTtHhAaEeOoOoOoOoYyoO/;
+    return $word;
 }
 
 1;

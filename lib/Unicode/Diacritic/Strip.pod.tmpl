@@ -1,7 +1,38 @@
 [% start_year=2012 %]
+[%- MACRO example(file) BLOCK %]
+[%- pl = file _ ".pl" -%]
+[%- out = file _ "-out.txt" -%]
+[% INCLUDE $pl | xtidy %]
+
+produces output
+
+[% INCLUDE $out | xtidy %]
+
+(This example is included as L<F<[% pl %]>|https://api.metacpan.org/source/BKB/[% info.name %]-[% info.version %]/examples/[% pl %]> in the distribution.)
+[% END %]
+=encoding UTF-8
+
 =head1 NAME
 
 Unicode::Diacritic::Strip - strip diacritics from Unicode text
+
+=head1 SYNOPSIS
+
+[% example("synopsis") %]
+
+=head1 VERSION
+
+This documents [% info.colon %] version [% info.version %]
+corresponding to git commit L<[% commit.commit %]|[% info.repo
+%]/commit/[% commit.commit %]> released on [% commit.date %].
+
+=head1 DESCRIPTION
+
+This module offers two ways to remove diacritics from Unicode
+text. One of them, L</strip_diacritics>, uses the unicode
+decompositions to break the characters down. The other one,
+L</fast_strip>, uses tr with a big list of alphabetical characters
+with and without diacritics.
 
 =head1 FUNCTIONS
 
@@ -12,6 +43,16 @@ Unicode::Diacritic::Strip - strip diacritics from Unicode text
 Strip diacritics from C<$text>. The diacritics are as defined by the
 Unicode Character Database. See L<Unicode::UCD>.
 
+=head1 fast_strip
+
+    my $stripped = fast_strip ($text);
+
+Rapidly strip alphabetical Unicode characters to the nearest plain
+ASCII equivalents. This is just a big list of characters and a C<tr>
+to zap them into ASCII.
+
+[% example("ask") %]
+
 =head1 SEE ALSO
 
 =head2 CPAN modules
@@ -21,6 +62,12 @@ Unicode Character Database. See L<Unicode::UCD>.
 =item L<Text::Undiacritic>
 
 =back
+
+=head1 EXPORTS
+
+Nothing is exported by default. The functions L</strip_diacritics> and
+L</fast_strip> are exported on demand. A tag C<:all> exports all the
+functions from the module.
 
 [% INCLUDE "author" %]
 

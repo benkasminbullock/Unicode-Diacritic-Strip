@@ -4,7 +4,5 @@ use strict;
 use Perl::Build;
 
 perl_build (
-    pod => [
-        'lib/Unicode/Diacritic/Strip.pod',
-    ],
+    make_pod => './make-pod.pl',
 );

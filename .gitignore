@@ -5,3 +5,4 @@ README
 lib/Unicode/Diacritic/Strip.pod
 # Distribution files
 Unicode-Diacritic-Strip-[0-9]*
+examples/*-out.txt

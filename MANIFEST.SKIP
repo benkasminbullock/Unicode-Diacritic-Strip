@@ -1,6 +1,6 @@
 ^blib/.*$
 ^Makefile$
-^build\.pl$
+^(build|make-pod)\.pl$
 ^\.git.*$
 \.pod\.tmpl$
 ^MYMETA\..*$
@@ -9,3 +9,4 @@
 ^Unicode-Diacritics-Strip-.*$
 ^\.perlcriticrc$
 ^xt/.*$
+^examples/.*-out\.txt$
