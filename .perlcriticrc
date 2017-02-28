@@ -23,6 +23,9 @@ severity = 1
 [-RegularExpressions::RequireExtendedFormatting]
 [-RegularExpressions::RequireDotMatchAnything]
 [-ValuesAndExpressions::ProhibitEmptyQuotes]
+[InputOutput::RequireCheckedSyscalls]
+functions = :builtins
+exclude_functions = print
 # Local variables:
 # mode: conf
 # End:

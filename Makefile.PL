@@ -5,7 +5,7 @@ use ExtUtils::MakeMaker;
 my $name = 'Unicode::Diacritic::Strip';
 my $pm = 'lib/Unicode/Diacritic/Strip.pm';
 my $pod = 'lib/Unicode/Diacritic/Strip.pod';
-my $repo = "https://github.com/benkasminbullock/$name";
+my $repo = "https://github.com/benkasminbullock/Unicode-Diacritic-Strip";
 $repo =~ s!::!-!g;
 
 WriteMakefile (

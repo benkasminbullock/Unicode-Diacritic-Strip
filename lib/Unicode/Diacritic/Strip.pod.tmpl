@@ -32,7 +32,9 @@ This module offers two ways to remove diacritics from Unicode
 text. One of them, L</strip_diacritics>, uses the unicode
 decompositions to break the characters down. The other one,
 L</fast_strip>, uses tr with a big list of alphabetical characters
-with and without diacritics.
+with and without diacritics. There is also L</strip_alphabet>, which
+is the same as L</strip_diacritics>, but it also returns a list of what
+characters were changed.
 
 =head1 FUNCTIONS
 
@@ -43,7 +45,21 @@ with and without diacritics.
 Strip diacritics from C<$text>. The diacritics are as defined by the
 Unicode Character Database. See L<Unicode::UCD>.
 
-=head1 fast_strip
+=head2 strip_alphabet
+
+    my ($stripped, $swaps) = strip_alphabet ($text);
+
+Strip diacritics from C<$text> in the same way as
+L</strip_diacritics>, and also return the alphabet of diacritic to
+non-diacritic characters as a hash reference.
+
+[% example("strip-alphabet") %]
+
+This was added to the module in version 0.08. Prior to that it was in
+another module called Unicode::StripDiacritics which I wrote as a
+duplicate of this module, but fortunately hadn't released to CPAN.
+
+=head2 fast_strip
 
     my $stripped = fast_strip ($text);
 
@@ -53,6 +69,11 @@ to zap them into ASCII.
 
 [% example("ask") %]
 
+This was added to the module in version 0.07. It has been in service
+for several years at the following website:
+L<http://www.sljfaq.org/cgi/e2k.cgi> for converting the user's inputs
+into the closest English equivalent.
+
 =head1 SEE ALSO
 
 =head2 CPAN modules
@@ -60,6 +81,12 @@ to zap them into ASCII.
 =over
 
 =item L<Text::Undiacritic>
+
+This overlaps with Unicode::Diacritic::Strip.
+
+=item L<Text::Unidecode>
+
+This somewhat bizarre module converts Unicode to ASCII.
 
 =back
 

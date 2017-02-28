@@ -1,5 +1,10 @@
 Revision history for perl module Unicode::Diacritic::Strip
 
+0.08 2017-02-28
+
+* Fix bad repo link in Makefile.PL
+* New function strip_alphabet (was Unicode::StripDiacritics)
+
 0.07 2017-02-28
 
 * Export tag ":all"
