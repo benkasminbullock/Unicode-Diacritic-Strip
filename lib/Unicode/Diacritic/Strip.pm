@@ -1,6 +1,7 @@
 package Unicode::Diacritic::Strip;
 use warnings;
 use strict;
+use utf8;
 require Exporter;
 use base qw(Exporter);
 our @EXPORT_OK = qw/strip_diacritics strip_alphabet fast_strip/;
@@ -8,7 +9,6 @@ our %EXPORT_TAGS = (all => \@EXPORT_OK);
 our $VERSION = '0.08';
 use Unicode::UCD 'charinfo';
 use Encode 'decode_utf8';
-use utf8;
 
 sub strip_diacritics
 {
