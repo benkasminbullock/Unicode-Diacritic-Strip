@@ -31,10 +31,11 @@ corresponding to git commit L<[% commit.commit %]|[% info.repo
 This module offers two ways to remove diacritics from Unicode
 text. One of them, L</strip_diacritics>, uses the unicode
 decompositions to break the characters down. The other one,
-L</fast_strip>, uses tr with a big list of alphabetical characters
-with and without diacritics. There is also L</strip_alphabet>, which
-is the same as L</strip_diacritics>, but it also returns a list of what
-characters were changed.
+L</fast_strip>, is a faster alternative, which is basically C<tr> with
+a big list of alphabetical characters with and without
+diacritics. There is also L</strip_alphabet>, which is the same as
+L</strip_diacritics>, but it also returns a list of what characters
+were changed.
 
 =head1 FUNCTIONS
 
@@ -65,7 +66,8 @@ duplicate of this module, but fortunately hadn't released to CPAN.
 
 Rapidly strip alphabetical Unicode characters to the nearest plain
 ASCII equivalents. This is just a big list of characters and a C<tr>
-to zap them into ASCII.
+to zap them into ASCII. It also contains a few other things like the
+thorn character and a ligature.
 
 [% example("ask") %]
 
@@ -101,6 +103,16 @@ problems compiling on 64 bit systems.
 
 =back
 
+=head2 Web pages
+
+The page at L<Strip diacritics from
+text|https://www.lemoda.net/tools/strip-diacritics/index.html> offers
+an online interface to this module.
+
+L<How to remove diacritic marks from
+characters|http://ahinea.com/en/tech/accented-translate.html> by Ivan
+Kurmanov.
+
 =head1 DEPENDENCIES
 
 =over
@@ -131,7 +143,10 @@ containing the error string
     perl: hv.c:2663: S_unshare_hek_or_pvn: Assertion `he->shared_he_he.hent_hek == hek' failed.
 
 are due to a bug in that version of Perl, and are completely beyond my
-control. [% info.colon %] is a pure Perl module with no XS components.
+control. [% info.colon %] is a pure Perl module with no XS
+components. (I have tried to contact the tester responsible for these
+reports with no success, due to the registered email address
+bouncing.)
 
 =back
 

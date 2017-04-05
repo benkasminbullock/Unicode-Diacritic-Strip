@@ -10,7 +10,6 @@ binmode $builder->todo_output,    ":utf8";
 binmode STDOUT, ":encoding(utf8)";
 binmode STDERR, ":encoding(utf8)";
 use Perl::Build 'get_info';
-use lib '/home/ben/projects/perl-build/lib';
 use Perl::Build::Dist qw/bad_modules depend/;
 use Perl::Build::Pod 'get_dep_section';
 
