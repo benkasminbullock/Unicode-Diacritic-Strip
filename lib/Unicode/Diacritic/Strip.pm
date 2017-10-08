@@ -6,7 +6,7 @@ require Exporter;
 use base qw(Exporter);
 our @EXPORT_OK = qw/strip_diacritics strip_alphabet fast_strip/;
 our %EXPORT_TAGS = (all => \@EXPORT_OK);
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 use Unicode::UCD 'charinfo';
 use Encode 'decode_utf8';
 
@@ -32,8 +32,6 @@ sub strip_diacritics
     my $stripped_text = join '', @characters;
     return $stripped_text;
 }
-
-# Decompose one character. This is the core part of the program.
 
 sub decompose
 {
@@ -94,8 +92,6 @@ sub strip_alphabet
     }
     return ($stripped_text, \%swaps);
 }
-
-# Decompose one character. This is the core part of the program.
 
 sub fast_strip
 {
