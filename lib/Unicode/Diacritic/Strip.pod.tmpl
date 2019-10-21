@@ -29,13 +29,12 @@ corresponding to git commit L<[% commit.commit %]|[% info.repo
 =head1 DESCRIPTION
 
 This module offers two ways to remove diacritics from Unicode
-text. One of them, L</strip_diacritics>, uses the unicode
+text. One of them, L</strip_diacritics>, uses the Unicode
 decompositions to break the characters down. The other one,
-L</fast_strip>, is a faster alternative, which is basically C<tr> with
-a big list of alphabetical characters with and without
-diacritics. There is also L</strip_alphabet>, which is the same as
-L</strip_diacritics>, but it also returns a list of what characters
-were changed.
+L</fast_strip>, is a faster alternative based on a hash of
+alphabetical characters with and without diacritics. There is also
+L</strip_alphabet>, which is the same as L</strip_diacritics>, but it
+also returns a list of what characters were changed.
 
 =head1 FUNCTIONS
 
@@ -65,16 +64,17 @@ duplicate of this module, but fortunately hadn't released to CPAN.
     my $stripped = fast_strip ($text);
 
 Rapidly strip alphabetical Unicode characters to the nearest plain
-ASCII equivalents. This is just a big list of characters and a C<tr>
-to zap them into ASCII. It also contains a few other things like the
-thorn character and a ligature.
+ASCII equivalents. This is just a big list of characters and a
+substitution statement which zaps them into ASCII. It also contains a
+few other things like the thorn character and a ligature.
 
 [% example("ask") %]
 
 This was added to the module in version 0.07. It has been in service
 for several years at the following website:
 L<http://www.sljfaq.org/cgi/e2k.cgi> for converting the user's inputs
-into the closest English equivalent.
+into the closest English equivalent. It was changed from a C<tr> to a
+substitution in version 0.12.
 
 =head1 SEE ALSO
 
@@ -116,8 +116,6 @@ Kurmanov.
 =over
 
 =item L<Unicode::UCD>
-
-=item L<Encode>
 
 =back
 
