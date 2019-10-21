@@ -93,7 +93,7 @@ sub strip_alphabet
     return ($stripped_text, \%swaps);
 }
 
-our %strip = (
+my %strip = (
 'À' => 'A',
 'Á' => 'A',
 'Â' => 'A',

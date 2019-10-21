@@ -23,6 +23,8 @@ severity = 1
 [-RegularExpressions::RequireExtendedFormatting]
 [-RegularExpressions::RequireDotMatchAnything]
 [-ValuesAndExpressions::ProhibitEmptyQuotes]
+# Put quotes around these since diacritics
+[-ValuesAndExpressions::ProhibitNoisyQuotes]
 [InputOutput::RequireCheckedSyscalls]
 functions = :builtins
 exclude_functions = print
