@@ -6,7 +6,7 @@ require Exporter;
 use base qw(Exporter);
 our @EXPORT_OK = qw/strip_diacritics strip_alphabet fast_strip/;
 our %EXPORT_TAGS = (all => \@EXPORT_OK);
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 use Unicode::UCD 'charinfo';
 
 sub strip_diacritics

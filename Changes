@@ -1,5 +1,10 @@
 Revision history for perl module Unicode::Diacritic::Strip
 
+0.13 2019-10-21
+
+* "Encode" dependency removed
+* Documentation updated
+
 0.12 2019-10-21
 
 * fast_strip now based on hash, not tr, due to conflict with Perl 30
