@@ -589,6 +589,29 @@ my %strip = (
 'ỷ' => 'y',
 'Ỹ' => 'Y',
 'ỹ' => 'y',
+# Various ligatures
+'Œ' => 'OE',
+'œ' => 'oe',
+'ƕ' => 'hv',
+'Ǆ' => 'DZ',
+'ǅ' => 'Dz',
+'ǆ' => 'dz',
+'Ǉ' => 'LJ',
+'ǈ' => 'Lj',
+'ǉ' => 'lj',
+'Ǌ' => 'NJ',
+'ǋ' => 'Nj',
+'ǌ' => 'nj',
+'Ǣ' => 'AE',
+'ǣ' => 'ae',
+'Ǳ' => 'DZ',
+'ǲ' => 'Dz',
+'ǳ' => 'dz',
+'Ǽ' => 'AE',
+'ǽ' => 'ae',
+# Thorn
+'Þ' => 'Th',
+'þ' => 'th',
 );
 
 my $strip_keys = join '', keys %strip;
@@ -596,10 +619,6 @@ my $strip_keys = join '', keys %strip;
 sub fast_strip
 {
     my ($word) = @_;
-    # Expand ligatures.
-    $word =~ s/œ/oe/g;
-    # Thorn is "th".
-    $word =~ s/Þ|þ/th/g;
     # Remove all diacritics
     $word =~ s/([$strip_keys])/$strip{$1}/g;
     $word =~ s/\p{InCombiningDiacriticalMarks}//g;
