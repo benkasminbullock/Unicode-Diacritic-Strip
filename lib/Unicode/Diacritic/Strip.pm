@@ -44,6 +44,8 @@ sub decompose
     }
     # Get the first character of the decomposition
     my @decomposition_chars = split /\s+/, $decomposition;
+    # Remove <compat> etc.
+    @decomposition_chars = grep !/<.*?>/, @decomposition_chars;
     $character = chr hex $decomposition_chars[0];
     # A character may have multiple decompositions, so repeat this
     # process until there are none left.
