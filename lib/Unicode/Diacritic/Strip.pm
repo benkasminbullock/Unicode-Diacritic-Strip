@@ -6,7 +6,7 @@ require Exporter;
 use base qw(Exporter);
 our @EXPORT_OK = qw/strip_diacritics strip_alphabet fast_strip/;
 our %EXPORT_TAGS = (all => \@EXPORT_OK);
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 use Unicode::UCD 'charinfo';
 
 sub strip_diacritics
@@ -43,10 +43,13 @@ sub decompose
 	return $character;
     }
     # Get the first character of the decomposition
-    my @decomposition_chars = split /\s+/, $decomposition;
+    my @dc = split /\s+/, $decomposition;
     # Remove <compat> etc.
-    @decomposition_chars = grep !/<.*?>/, @decomposition_chars;
-    $character = chr hex $decomposition_chars[0];
+    if ($dc[0] =~ /</) {
+	print "$character $decomposition\n";
+    }
+    @dc = grep !/<.*?>/, @dc;
+    $character = chr hex $dc[0];
     # A character may have multiple decompositions, so repeat this
     # process until there are none left.
     return decompose ($character);
