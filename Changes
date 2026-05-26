@@ -1,5 +1,9 @@
 Revision history for perl module Unicode::Diacritic::Strip
 
+0.15 2026-05-25
+
+* Allow the table used by fast_strip, %strip, to be exported.
+
 0.14 2022-12-07
 
 * Remove <compat> etc. when doing decompositions

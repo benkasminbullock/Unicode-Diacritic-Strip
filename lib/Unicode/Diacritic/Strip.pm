@@ -4,9 +4,9 @@ use strict;
 use utf8;
 require Exporter;
 use base qw(Exporter);
-our @EXPORT_OK = qw/strip_diacritics strip_alphabet fast_strip/;
+our @EXPORT_OK = qw/strip_diacritics strip_alphabet fast_strip %strip/;
 our %EXPORT_TAGS = (all => \@EXPORT_OK);
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 use Unicode::UCD 'charinfo';
 
 sub strip_diacritics
@@ -97,7 +97,7 @@ sub strip_alphabet
     return ($stripped_text, \%swaps);
 }
 
-my %strip = (
+our %strip = (
 'À' => 'A',
 'Á' => 'A',
 'Â' => 'A',
